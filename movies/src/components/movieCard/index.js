@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -11,7 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Grid from "@mui/material/Grid2";
-import img from '../../images/film-poster-placeholder.png'
+import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import IconButton from "@mui/material/IconButton";
@@ -23,20 +23,22 @@ export default function MovieCard({ movie, action }) {
   if (favorites.find((id) => id === movie.id)) {
     movie.favorite = true;
   } else {
-    movie.favorite = false
+    movie.favorite = false;
   }
 
   const handleAddToFavorite = (e) => {
     e.preventDefault();
     addToFavorites(movie);
   };
+
   const handleAddToPlaylist = (e) => {
     e.preventDefault();
     addToPlaylist(movie);
   };
+
   return (
     <Card>
-       <CardHeader
+      <CardHeader
         avatar={
           movie.favorite ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
@@ -60,13 +62,13 @@ export default function MovieCard({ movie, action }) {
       />
       <CardContent>
         <Grid container>
-          <Grid size={{xs: 6}}>
+          <Grid size={{ xs: 6 }}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
               {movie.release_date}
             </Typography>
           </Grid>
-          <Grid size={{xs: 6}}>
+          <Grid size={{ xs: 6 }}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
               {"  "} {movie.vote_average}{" "}
@@ -75,8 +77,7 @@ export default function MovieCard({ movie, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      
-        {action(movie)}
+        {typeof action === "function" ? action(movie) : null}
         <IconButton color="primary" onClick={handleAddToPlaylist}>
           <PlaylistAddIcon />
         </IconButton>
@@ -85,8 +86,11 @@ export default function MovieCard({ movie, action }) {
             More Info ...
           </Button>
         </Link>
-        
       </CardActions>
     </Card>
   );
 }
+
+MovieCard.defaultProps = {
+  action: () => null, 
+};

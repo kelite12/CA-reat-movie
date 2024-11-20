@@ -10,7 +10,6 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 
-
 const root = {
     display: "flex",
     justifyContent: "center",
@@ -93,4 +92,5 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
       </>
   );
 };
+
 export default MovieDetails ;
