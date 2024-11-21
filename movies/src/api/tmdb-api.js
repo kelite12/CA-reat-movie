@@ -113,3 +113,13 @@ export const getMovieRecommendations = (id) => {
     .then((res) => res.json())
     .then((json) => json.results);
 };
+
+export const getTrendingMovies = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  );
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return response.json();
+};
