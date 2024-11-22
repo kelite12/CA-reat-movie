@@ -25,6 +25,7 @@ export default function FilterMoviesCard(props) {
     return <h1>{error.message}</h1>;
   }
   const genres = data.genres;
+  
   if (genres[0].name !== "All"){
     genres.unshift({ id: "0", name: "All" });
   }
@@ -36,6 +37,10 @@ export default function FilterMoviesCard(props) {
 
   const handleTextChange = (e, props) => {
     handleChange(e, "name", e.target.value);
+  };
+
+  const handleLanguageChange = (e, props) => {
+    handleChange(e, "language", e.target.value);
   };
 
   const handleGenreChange = (e) => {
@@ -83,6 +88,21 @@ export default function FilterMoviesCard(props) {
                 </MenuItem>
               );
             })}
+          </Select>
+        </FormControl>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="language-label">Language</InputLabel>
+          <Select
+            labelId="language-label"
+            id="language-select"
+            defaultValue=""
+            value={props.languageFilter}
+            onChange={handleLanguageChange}
+          >
+            <MenuItem value="">ALL</MenuItem>
+            <MenuItem value="en">English</MenuItem>
+            <MenuItem value="es">Spanish</MenuItem>
+            <MenuItem value="fr">French</MenuItem>
           </Select>
         </FormControl>
       </CardContent>

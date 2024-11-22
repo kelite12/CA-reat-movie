@@ -8,6 +8,8 @@ const HomePage = (props) => {
 
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 
+  console.log(data)//lan
+
   if (isLoading) {
     return <Spinner />
   }
