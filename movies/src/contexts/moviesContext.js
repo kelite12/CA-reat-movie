@@ -17,7 +17,7 @@ const MoviesContextProvider = (props) => {
     setFavorites(newFavorites)
   };
   
-  // We will use this function in the next step
+  
   const addToWatchlist = (movie) => {
     if (!watchlist.includes(movie.id)) {
       setWatchlist([...watchlist, movie.id]);
@@ -26,8 +26,8 @@ const MoviesContextProvider = (props) => {
   };
   const addToPlaylist = (movie) => {
     if (!watchlist.includes(movie.id)) {
-      setWatchlist([...watchlist, movie.id]); // 更新必看列表
-      console.log("Watchlist:", [...watchlist, movie.id]); // 输出必看列表内容
+      setWatchlist([...watchlist, movie.id]);
+      console.log("Watchlist:", [...watchlist, movie.id]); 
     }
   };
   const removeFromFavorites = (movie) => {
