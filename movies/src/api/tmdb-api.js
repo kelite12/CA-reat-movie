@@ -8,11 +8,9 @@ export const getMovies = () => {
       });
     }
     return response.json();
-  })
-  .catch((error) => {
-      throw error
   });
 };
+
 export const getMovie = (args) => {
   //console.log(args)
   const [, idPart] = args.queryKey;
